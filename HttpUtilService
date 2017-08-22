@@ -1,9 +1,9 @@
 
-  angular.module("RDash").factory("MF3HTTPService", ['$http','$cookies',  MF3HTTPService]);
+  angular.module("RDash").factory("HttpUtilService", ['$http','$cookies',  HttpUtilService]);
 
     angular.mf3Context = "http://163.172.181.95:8080";
 
-function MF3HTTPService($http, $cookies){
+function HttpUtilService($http, $cookies){
     var beans = {};
     var factory = {
 
