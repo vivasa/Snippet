@@ -1,0 +1,84 @@
+
+  angular.module("RDash").factory("MF3HTTPService", ['$http','$cookies',  MF3HTTPService]);
+
+    angular.mf3Context = "http://localhost:8080";
+
+function MF3HTTPService($http, $cookies){
+    var beans = {};
+    var factory = {
+
+        login: function(bean){
+           
+            var result=$http({
+                url : angular.mf3Context+"/api/login",
+                method : 'POST',data:bean}).then(function(data){
+                    return data;
+                },function(data, status, headers, config){
+                    alert("login error",status);
+                });
+            return result;
+        },
+       
+        get: function(beanUrl, params){
+           
+            var access_token=$cookies.get("access_token");
+            $http.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
+            var config = {
+                "Access-Control-Request-Headers": "x-requested-with",
+                "Access-Control-Allow-Credentials": true
+            };
+              
+            var result = $http.get(angular.mf3Context + "/" + beanUrl, config).then(function(data) {
+                return data;
+            }, function(err) {
+                console.log("err",err.status);
+                return err;
+            });
+            return result;
+        },
+        put: function(beanUrl, params){
+            var access_token=$cookies.get("access_token");
+            $http.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
+           
+            var result = $http.put(angular.mf3Context + "/" + beanUrl, params).then(function(data) {
+                return data;
+            }, function(err) {
+                console.log(err);
+                return err;
+            });
+
+            return result;
+        },
+        post: function(beanUrl,bean){
+            var access_token=$cookies.get("access_token");
+            $http.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
+            
+            var result = $http.post(angular.mf3Context + "/" + beanUrl, bean).then(function(response) {
+                return response;
+            },function(err) {
+                console.log("status",err);
+                return status;
+            });
+
+            return result;
+        },
+        delete: function(beanUrl, params){
+            var access_token=$cookies.get("access_token");
+            $http.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
+            
+            var result = $http.delete(angular.mf3Context + "/" + beanUrl, bean).then(function(data) {
+                console.log("Successfully deleted "+JSON.stringify(data));
+                return data;
+            }, function(err) {
+                console.log(err);
+                return err;
+            });
+
+            return result;
+        }
+
+    };
+    return factory;
+}
+
+
