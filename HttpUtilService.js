@@ -6,8 +6,17 @@
 function HttpUtilService($http, $cookies){
     var beans = {};
     var factory = {
-
-        
+        login: function(bean){
+           
+            var result=$http({
+                url : angular.mf3Context+"/api/login",
+                method : 'POST',data:bean}).then(function(data){
+                    return data;
+                },function(data, status, headers, config){
+                    alert("login error",status);
+                });
+            return result;
+        },
        
         get: function(beanUrl, params){
            
