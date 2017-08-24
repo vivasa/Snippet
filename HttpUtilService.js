@@ -1,7 +1,6 @@
 
-  angular.module("MyApp").factory("HttpUtilService", ['$http','$cookies',  HttpUtilService]);
+angular.module("MyApp").factory("HttpUtilService", ['$http','$cookies',  HttpUtilService]);
 
-    angular.mf3Context = "http://163.172.181.95:8080";
 
 function HttpUtilService($http, $cookies){
     var beans = {};
