@@ -1,12 +1,22 @@
 
   angular.module("MyApp").factory("HttpUtilService", ['$http','$cookies',  HttpUtilService]);
 
-    //angular.mf3Context = "http://163.172.181.95:8080";
+    angular.mf3Context = "http://163.172.181.95:8080";
 
 function HttpUtilService($http, $cookies){
     var beans = {};
     var factory = {
-       
+        login: function(bean){
+           
+            var result=$http({
+                url : angular.mf3Context+"/api/login",
+                method : 'POST',data:bean}).then(function(data){
+                    return data;
+                },function(data, status, headers, config){
+                    alert("login error",status);
+                });
+            return result;
+        },
        
         get: function(beanUrl, params){
            
