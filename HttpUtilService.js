@@ -26,7 +26,7 @@ function HttpUtilService($http, $cookies){
                 "Access-Control-Allow-Credentials": true
             };
               
-            var result = $http.get("/" + beanUrl,config).then(function(data){
+            var result = $http.get(" " + beanUrl,config).then(function(data){
                 return data;
             }, function(err) {
                 console.log("err",err.status);
