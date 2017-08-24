@@ -38,7 +38,7 @@ function HttpUtilService($http, $cookies){
             var access_token=$cookies.get("access_token");
             $http.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
            
-            var result = $http.put("/" + beanUrl, params).then(function(data) {
+            var result = $http.put(" " + beanUrl, params).then(function(data) {
                 return data;
             }, function(err) {
                 console.log(err);
@@ -51,7 +51,7 @@ function HttpUtilService($http, $cookies){
             var access_token=$cookies.get("access_token");
             $http.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
             
-            var result = $http.post("/" + beanUrl, bean).then(function(response) {
+            var result = $http.post(" " + beanUrl, bean).then(function(response) {
                 return response;
             },function(err) {
                 console.log("status",err);
@@ -64,7 +64,7 @@ function HttpUtilService($http, $cookies){
             var access_token=$cookies.get("access_token");
             $http.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
             
-            var result = $http.delete("/" + beanUrl, bean).then(function(data) {
+            var result = $http.delete(" " + beanUrl, bean).then(function(data) {
                 console.log("Successfully deleted "+JSON.stringify(data));
                 return data;
             }, function(err) {
