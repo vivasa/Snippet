@@ -24,7 +24,8 @@ function HttpUtilService($http, $cookies){
             $http.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
             var config = {
                 "Access-Control-Request-Headers": "x-requested-with",
-                "Access-Control-Allow-Credentials": true
+                "Access-Control-Allow-Credentials": true,
+                "Access-Control-Allow-Origin":*
             };
               
             var result = $http.get(angular.mf3Context + "/" + beanUrl, config).then(function(data) {
