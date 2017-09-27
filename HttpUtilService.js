@@ -47,11 +47,10 @@ function HttpUtilService($http, $cookies){
 
             return result;
         },
-        post: function(beanUrl,bean){
-            var access_token=$cookies.get("access_token");
-            $http.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
+        post: function(beanUrl, data, headers){
+            $http.defaults.headers.common = headers;
             
-            var result = $http.post(" " + beanUrl, bean).then(function(response) {
+            var result = $http.post(" " + beanUrl, data).then(function(response) {
                 return response;
             },function(err) {
                 console.log("status",err);
@@ -60,6 +59,7 @@ function HttpUtilService($http, $cookies){
 
             return result;
         },
+       
         delete: function(beanUrl, params){
             var access_token=$cookies.get("access_token");
             $http.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
